@@ -1,4 +1,6 @@
 import {test, expect} from "@playwright/test"
+import { argosScreenshot } from "@argos-ci/playwright"
+
 
 
 test.beforeEach(async({page}) => {
@@ -13,6 +15,8 @@ test("Auto Waiting", async({page}) =>{
 
     const text = await suceessButton.textContent()  //auto waiting
     expect(text).toEqual("Data loaded with AJAX get request.")
+    await argosScreenshot(page, "Test 1");
+
 
     //await expect(suceessButton).toHaveText("Data loaded with AJAX get request.", {timeout: 20000})  //overide timeout to 20secs
 })
@@ -31,5 +35,6 @@ test("Alternative Waits", async({page}) =>{
 
     const text = await suceessButton.textContent()  
     expect(text).toEqual("Data loaded with AJAX get request.")
+    await argosScreenshot(page, "test 2")
 })
 
